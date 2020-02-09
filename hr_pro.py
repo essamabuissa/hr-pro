@@ -8,12 +8,12 @@ class Employee:
        self.salary = int(salary)
        self.employment_year = employment_year
 
-    def get_working_years(self, employment_year):
-        today = datetime.date.today().year - 1
-        return today - employment_year
+    def get_working_years(self):
+        today = datetime.date.today().year
+        return today - self.employment_year
 
     def __str__(self):
-        return f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working Years: {self.get_working_years(self.employment_year)}"
+        return f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working Years: {self.get_working_years()}"
 
 
 
@@ -26,11 +26,11 @@ class Manager(Employee):
 
 
 
-    def get_bonus(self,bonus_percentage,salary):
-        return bonus_percentage * salary
+    def get_bonus(self):
+        return self.bonus_percentage * self.salary
 
     def __str__(self):
-        return f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working Years: {self.get_working_years(self.employment_year)}, Bonus: {self.get_bonus(self.bonus_percentage,self.salary)}"
+        return f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working Years: {self.get_working_years()}, Bonus: {self.get_bonus()}"
 
 
 
@@ -55,13 +55,13 @@ def main():
                 5. Exit"""))
         print()
 
-        user_input = input("What would you like to do? ")
+        user_input = int(input("What would you like to do? "))
         print("-----------------")
 
-        if user_input == "5":
+        if user_input == 5:
             break
 
-        if user_input == "3":
+        if user_input == 3:
             name = input("Name: ")
             age  = input("Age: ")
             salary = int(input("Salary: "))
@@ -70,7 +70,7 @@ def main():
             employees_list.append(employee)
             print("Employee added succesfully")
 
-        elif user_input == "1":
+        elif user_input == 1:
             print("Employees")
             print()
             for empl in employees_list:
@@ -79,7 +79,7 @@ def main():
 
 
 
-        elif user_input == "4":
+        elif user_input == 4:
             name = input("Name: ")
             age  = input("Age: ")
             salary = int(input("Salary: "))
@@ -89,7 +89,7 @@ def main():
             managers_list.append(manager)
             print("Manager added succesfully")
 
-        elif user_input == "2":
+        elif user_input == 2:
             print("Managers")
             print()
             for managers in managers_list:
